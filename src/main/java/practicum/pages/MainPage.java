@@ -2,8 +2,7 @@ package practicum.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import practicum.Main;
-import practicum.pages.BasePage;
+
 import static practicum.Constants.*;
 
 public class MainPage extends BasePage{

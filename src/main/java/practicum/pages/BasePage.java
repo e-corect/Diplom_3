@@ -35,7 +35,7 @@ public abstract class BasePage {
         return this;
     }
 
-    protected BasePage goToLogin(){
+    protected BasePage goToPersonalArea(){
         driver.findElement(personalArea).click();
         return this;
     }
@@ -45,7 +45,7 @@ public abstract class BasePage {
         return this;
     }
 
-    protected void quit(){
+    void quit(){
         driver.quit();
     }
 }
