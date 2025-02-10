@@ -2,6 +2,8 @@ package practicum.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static practicum.Constants.*;
 
@@ -12,7 +14,12 @@ public class PersonalAccountPage extends BasePage{
     }
 
     private final By logoutButton = By.xpath(LOGOUT_BTN_XPATH);
-    private final By nameField = By.xpath(LOGIN_FIELD_XPATH);
+    private final By profileTab = By.xpath(PROFILE_TAB_XPATH);
+
+    public By getProfileTab() {
+        return profileTab;
+    }
+
 
     @Override
     public PersonalAccountPage open(){
@@ -20,14 +27,16 @@ public class PersonalAccountPage extends BasePage{
         return this;
     }
 
-    public String getEmail(){
-        return driver.findElement(nameField).getAttribute("value");
-    }
-
     public PersonalAccountPage logout(){
         driver.findElement(logoutButton).click();
         return this;
     }
 
+    public PersonalAccountPage backToPersonalAccount(){
+        goToPersonalArea();
+        new WebDriverWait(driver, 1)
+                .until(ExpectedConditions.elementToBeClickable(profileTab));
+        return this;
+    }
     
 }

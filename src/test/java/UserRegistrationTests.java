@@ -1,20 +1,17 @@
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import practicum.WebDriverFactory;
 import practicum.pages.LoginPage;
 import practicum.pages.PersonalAccountPage;
 import practicum.pages.RegPage;
 
-import static java.lang.Thread.sleep;
-import static practicum.Constants.INCORRECT_USER_PWD;
-import static practicum.Constants.USER_PWD;
+import static practicum.Constants.*;
 
 
-public class UserRegistrationTest {
+public class UserRegistrationTests {
 
     WebDriver driver = WebDriverFactory.getDriver();
     RegPage regPage = new RegPage(driver);
@@ -25,20 +22,20 @@ public class UserRegistrationTest {
     public void successfullUserRegistration() throws InterruptedException {
         regPage.registerRandomUser(USER_PWD);
         LoginPage loginPage = new LoginPage(driver);
-
         loginPage.fillInEmail(regPage.getUserEmail()).fillInPwd(USER_PWD).enterBtnClick();
-//        PersonalAccountPage personalArea = new PersonalAccountPage(driver);
-        sleep(2000);
-//        Assert.assertEquals(regPage.getUserEmail(),personalArea.getEmail());
+        PersonalAccountPage personalArea = new PersonalAccountPage(driver);
+        personalArea.backToPersonalAccount();
+        Assert.assertTrue(driver.getCurrentUrl().contains("account/profile"));
+        Assert.assertEquals(driver.findElement(personalArea.getProfileTab()).getText(), "Профиль");
         userSteps.userLogin(regPage.getUserEmail(), USER_PWD).deleteUser();
     }
+
 
     @Test
     public void unsuccessfullUserRegistration(){
         regPage.registerRandomUser(INCORRECT_USER_PWD);
-        PersonalAccountPage personalArea = new PersonalAccountPage(driver);
-        Assert.assertEquals(regPage.getUserEmail(),personalArea.getEmail());
-        userSteps.userLogin(regPage.getUserEmail(), USER_PWD).deleteUser();
+        Assert.assertTrue(driver.getCurrentUrl().contains("/register"));
+        Assert.assertTrue(driver.findElement(By.xpath(WRONG_PWD_MSG_XPATH)).getText().equals(WRONG_PWD_MSG) );
     }
 
     @After

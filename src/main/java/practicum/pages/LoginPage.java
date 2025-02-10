@@ -49,8 +49,6 @@ public class LoginPage extends BasePage{
     public LoginPage fillInEmail(String email){
         new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.elementToBeClickable(emailInput)).clear();
-//        driver.findElement(emailInput).clear();
-
         driver.findElement(emailInput).sendKeys(email);
         return this;
     }
@@ -66,9 +64,7 @@ public class LoginPage extends BasePage{
         return this;
     }
 
-    public String getErrorMsg(){
+    public String getErrorMsg() {
         return driver.findElement(wrongPwdMsg).getText();
     }
-
-
 }

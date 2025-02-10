@@ -16,9 +16,9 @@ public class Constants {
     public static final String RECOVER_PWD_PATH = "/forgot-password";
     public static final String ACCOUNT_PROFILE_PATH = "account/profile";
     /// API
-    public static final String AUTH_USER_PATH = "/auth/user";
-    public static final String USER_LOGIN_PATH = "/auth/login";
-    public static final String USER_REGISTER_PATH = "/auth/register";
+    public static final String AUTH_USER_PATH = "api/auth/user";
+    public static final String USER_LOGIN_PATH = "api/auth/login";
+    public static final String USER_REGISTER_PATH = "api/auth/register";
     /// Headers
     public static final String CONTENT_TYPE_HEADER_NAME = "Content-Type";
     public static final String JSON_HEADER_VALUE = "application/json";
@@ -47,10 +47,8 @@ public class Constants {
     public static final String REGISTER_LINK_TEXT = REG_PATH;
     public static final String RECOVER_PWD_TEXT = "/forgot-password";
     public static final String INPUT_EMAIL_XPATH = ".//div/input[@name='name']";
-//    public static final String INPUT_EMAIL_XPATH = ".//label[text() = 'Email']//following-sibling::input";
     public static final String INPUT_PWD_XPATH = ".//div/input[@name='Пароль']";
     public static final String ENTER_BTN_XPATH = ".//button[text()='Войти']";
-    public static final String WRONG_PWD_MSG_XPATH = ".//p[text()='Некорректный пароль']";
     /// Элементы страницы регистрации
     public static final String REG_HEADER_TEXT = ".//h2[text()='Регистрация']";
     public static final String USERNAME_INPUT_XPATH = ".//label[text() = 'Имя']//following-sibling::input";
@@ -58,10 +56,12 @@ public class Constants {
     public static final String PWD_INPUT_XPATH = ".//div/input[@name='Пароль']";
     public static final String REG_BTN_XPATH = ".//button[text()='Зарегистрироваться']";
     public static final String RECOVER_PWD_LINK_XPATH = ".//a[text()='Восстановить пароль']";
+    public static final String WRONG_PWD_MSG_XPATH = ".//p[text()='Некорректный пароль']";
+    public static final String WRONG_PWD_MSG = "Некорректный пароль";
     /// Элементы страницы личного кабинета
     public static final String LOGOUT_BTN_XPATH = ".//button[text()='Выход']";
-    public static final String LOGIN_FIELD_XPATH = ".//label[text() = 'Логин']//following-sibling::input";;
-    public static final String NAME_FIELD_XPATH = ".//label[text() = 'Имя']//following-sibling::input";;
+    public static final String PROFILE_TAB_XPATH = ".//*[text() = 'Профиль']";
+
 
     public static final String USER_PWD = "Qwertys1234567";
     public static final String INCORRECT_USER_PWD = "123";

@@ -31,6 +31,8 @@ public class RegPage extends BasePage{
 
     private final By recoverPwdLink = By.xpath(RECOVER_PWD_LINK_XPATH);
 
+
+
     @Override
     public RegPage open(){
         driver.get(REG_URL);
