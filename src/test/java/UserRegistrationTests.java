@@ -2,7 +2,6 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import practicum.WebDriverFactory;
 import practicum.pages.LoginPage;
@@ -15,13 +14,14 @@ import static practicum.Constants.*;
 public class UserRegistrationTests {
 
     WebDriver driver = WebDriverFactory.getDriver();
-    RegPage regPage = new RegPage(driver);
-    UserSteps userSteps = new UserSteps();
+    RegPage regPage;
+    UserSteps userSteps;
 
     @Before
     public void prepare(){
+        regPage = new RegPage(driver);
+        userSteps = new UserSteps();
     }
-
 
     @Test
     public void successfullUserRegistration(){
@@ -46,5 +46,4 @@ public class UserRegistrationTests {
     public void clear(){
         driver.close();
     }
-
 }

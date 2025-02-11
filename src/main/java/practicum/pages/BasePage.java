@@ -39,8 +39,4 @@ public abstract class BasePage {
         driver.findElement(constructorButton).click();
         return this;
     }
-
-    void quit(){
-        driver.quit();
-    }
 }
