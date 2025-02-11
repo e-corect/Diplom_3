@@ -30,7 +30,7 @@ public class Constants {
     public static final String PERSONAL_AREA_BTN_XPATH = ".//p[text()='Личный Кабинет']";
 
     /// Элементы главной страницы
-    public static final String ENTER_ACCOUNT_BTN_XPATH = ".//button[text()='Войти в аккаунт']";
+    public static final String ENTER_ACCOUNT_BTN_XPATH = ".//div/button[text()='Войти в аккаунт']";
     // Заголовок Соберите бургер на главной
     public static final String ASSEMBLE_BURGER_HEADER_XPATH = ".//h1[text()='Соберите бургер']";
     public static final String BUNS_BTN_XPATH = ".//div/span[text()='Булки']";

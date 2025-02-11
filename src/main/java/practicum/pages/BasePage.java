@@ -20,11 +20,6 @@ public abstract class BasePage {
     private final By personalArea = By.xpath(PERSONAL_AREA_BTN_XPATH);
     private final By constructorButton = By.xpath(CONSTRUCTOR_BTN_XPATH);
 
-    BasePage open() {
-        driver.get(URL);
-        return this;
-    }
-
     protected BasePage goToMainPage(){
         driver.findElement(burgersLogo).click();
         return this;

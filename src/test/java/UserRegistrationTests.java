@@ -1,5 +1,6 @@
 import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,16 +18,20 @@ public class UserRegistrationTests {
     RegPage regPage = new RegPage(driver);
     UserSteps userSteps = new UserSteps();
 
+    @Before
+    public void prepare(){
+    }
+
 
     @Test
-    public void successfullUserRegistration() throws InterruptedException {
+    public void successfullUserRegistration(){
         regPage.registerRandomUser(USER_PWD);
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.fillInEmail(regPage.getUserEmail()).fillInPwd(USER_PWD).enterBtnClick();
+        loginPage.open().fillInEmail(regPage.getUserEmail()).fillInPwd(USER_PWD).enterBtnClick();
         PersonalAccountPage personalArea = new PersonalAccountPage(driver);
         personalArea.backToPersonalAccount();
-        Assert.assertTrue(driver.getCurrentUrl().contains("account/profile"));
-        Assert.assertEquals(driver.findElement(personalArea.getProfileTab()).getText(), "Профиль");
+        Assert.assertTrue(driver.getCurrentUrl().contains(ACCOUNT_PROFILE_PATH));
+        Assert.assertEquals("Профиль", driver.findElement(personalArea.getProfileTab()).getText());
         userSteps.userLogin(regPage.getUserEmail(), USER_PWD).deleteUser();
     }
 
@@ -34,7 +39,7 @@ public class UserRegistrationTests {
     @Test
     public void unsuccessfullUserRegistration(){
         regPage.registerRandomUser(INCORRECT_USER_PWD);
-        Assert.assertTrue(driver.getCurrentUrl().contains("/register"));
+        Assert.assertTrue(driver.getCurrentUrl().contains(REG_PATH));
         Assert.assertTrue(driver.findElement(By.xpath(WRONG_PWD_MSG_XPATH)).getText().equals(WRONG_PWD_MSG) );
     }
 

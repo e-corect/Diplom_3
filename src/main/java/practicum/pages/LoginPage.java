@@ -26,7 +26,6 @@ public class LoginPage extends BasePage{
     private final By recoverPwdLink = By.linkText(RECOVER_PWD_TEXT);
     private final By wrongPwdMsg = By.xpath(WRONG_PWD_MSG_XPATH);
 
-    @Override
     public LoginPage open(){
         driver.get(LOGIN_URL);
         return this;

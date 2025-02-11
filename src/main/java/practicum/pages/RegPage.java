@@ -19,8 +19,6 @@ public class RegPage extends BasePage{
         super(driver);
     }
 
-    private final By regPageHeader = By.xpath(REG_HEADER_TEXT);
-
     private final By userNameInput = By.xpath(USERNAME_INPUT_XPATH);
 
     private final By emailInput = By.xpath(EMAIL_INPUT_XPATH);
@@ -31,24 +29,13 @@ public class RegPage extends BasePage{
 
     private final By recoverPwdLink = By.xpath(RECOVER_PWD_LINK_XPATH);
 
-
-
-    @Override
     public RegPage open(){
         driver.get(REG_URL);
         return this;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
     public String getUserEmail() {
         return email;
-    }
-
-    public String getHeaderTxt(){
-        return driver.findElement(regPageHeader).getText();
     }
 
     public RegPage fillInUserName(String userName){

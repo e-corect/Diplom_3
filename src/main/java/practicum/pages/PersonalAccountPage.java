@@ -20,8 +20,6 @@ public class PersonalAccountPage extends BasePage{
         return profileTab;
     }
 
-
-    @Override
     public PersonalAccountPage open(){
         driver.get(ACCOUNT_PROFILE_PATH);
         return this;
@@ -34,7 +32,7 @@ public class PersonalAccountPage extends BasePage{
 
     public PersonalAccountPage backToPersonalAccount(){
         goToPersonalArea();
-        new WebDriverWait(driver, 1)
+        new WebDriverWait(driver, 2)
                 .until(ExpectedConditions.elementToBeClickable(profileTab));
         return this;
     }
