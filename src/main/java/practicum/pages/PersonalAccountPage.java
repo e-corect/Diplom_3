@@ -36,5 +36,11 @@ public class PersonalAccountPage extends BasePage{
                 .until(ExpectedConditions.elementToBeClickable(profileTab));
         return this;
     }
+
+    public String getProfileTabTxt(){
+        new WebDriverWait(driver, 2)
+                .until(ExpectedConditions.elementToBeClickable(profileTab));
+        return driver.findElement(profileTab).getText();
+    }
     
 }

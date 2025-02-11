@@ -1,5 +1,6 @@
 package practicum.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,9 +24,9 @@ public class LoginPage extends BasePage{
     private final By pwdInput = By.xpath(INPUT_PWD_XPATH);
     private final By enterBtn = By.xpath(ENTER_BTN_XPATH);
     private final By registerLink = By.linkText(REGISTER_LINK_TEXT);
-    private final By recoverPwdLink = By.linkText(RECOVER_PWD_TEXT);
-    private final By wrongPwdMsg = By.xpath(WRONG_PWD_MSG_XPATH);
+    private final By recoverPwdLink = By.xpath(RECOVER_PWD_LINK_XPATH);
 
+    @Step("Открываем форму Вход")
     public LoginPage open(){
         driver.get(LOGIN_URL);
         return this;
@@ -40,11 +41,13 @@ public class LoginPage extends BasePage{
         return this;
     }
 
+    @Step("Нажимаем на ссылку для восстановления пароля")
     public LoginPage goToRecoverPwd(){
         driver.findElement(recoverPwdLink).click();
         return this;
     }
 
+    @Step("Очищаем и заполняем поле Email")
     public LoginPage fillInEmail(String email){
         new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.elementToBeClickable(emailInput)).clear();
@@ -52,18 +55,16 @@ public class LoginPage extends BasePage{
         return this;
     }
 
+    @Step("Очищаем и заполняем поле Пароль")
     public LoginPage fillInPwd(String pwd){
         driver.findElement(pwdInput).clear();
         driver.findElement(pwdInput).sendKeys(pwd);
         return this;
     }
 
+    @Step("Нажимаем кнопку Войти")
     public LoginPage enterBtnClick(){
         driver.findElement(enterBtn).click();
         return this;
-    }
-
-    public String getErrorMsg() {
-        return driver.findElement(wrongPwdMsg).getText();
     }
 }

@@ -1,8 +1,12 @@
 package practicum.pages;
 
+import io.qameta.allure.Step;
 import org.jetbrains.annotations.Nullable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import static practicum.Utils.*;
 
 import static practicum.Constants.*;
@@ -27,8 +31,11 @@ public class RegPage extends BasePage{
 
     private final By regBtn = By.xpath(REG_BTN_XPATH);
 
-    private final By recoverPwdLink = By.xpath(RECOVER_PWD_LINK_XPATH);
+    private final By loginLink = By.xpath(LOGIN_LINK_XPATH);
 
+    private final By wrongPwdMsg = By.xpath(WRONG_PWD_MSG_XPATH);
+
+    @Step("Открываем форму регистрации")
     public RegPage open(){
         driver.get(REG_URL);
         return this;
@@ -38,6 +45,7 @@ public class RegPage extends BasePage{
         return email;
     }
 
+    @Step("Заполняем поле Имя")
     public RegPage fillInUserName(String userName){
         this.userName = userName;
         driver.findElement(userNameInput).clear();
@@ -45,6 +53,7 @@ public class RegPage extends BasePage{
         return this;
     }
 
+    @Step("Заполняем поле Email")
     public RegPage fillInEmail(String email){
         this.email = email;
         driver.findElement(emailInput).clear();
@@ -52,17 +61,28 @@ public class RegPage extends BasePage{
         return this;
     }
 
+    @Step("Заполняем поле Пароль")
     public RegPage fillInPwd(String pwd){
         driver.findElement(pwdInput).clear();
         driver.findElement(pwdInput).sendKeys(pwd);
         return this;
     }
 
+    @Step("Нажимем кнопку Зарегистрироваться")
     public RegPage clickRegBtn(){
         driver.findElement(regBtn).click();
         return this;
     }
 
+    @Step("Нажимем ссылку Войти")
+    public RegPage clickLoginLink(){
+        new WebDriverWait(driver, 2)
+                .until(ExpectedConditions.elementToBeClickable(loginLink));
+        driver.findElement(loginLink).click();
+        return this;
+    }
+
+    @Step("Генерируем и регистрируем пользователя со случайными параметрами")
     public RegPage registerRandomUser(@Nullable String pwd){
         if (pwd.equals(null)){
             pwd = USER_PWD;
@@ -72,5 +92,10 @@ public class RegPage extends BasePage{
                 .fillInEmail(generateEmail(userName))
                 .fillInPwd(pwd).clickRegBtn();
         return this;
+    }
+
+    @Step("Получаем сообщение об ошибке с формы регистрации")
+    public String getErrorMsg() {
+        return driver.findElement(wrongPwdMsg).getText();
     }
 }

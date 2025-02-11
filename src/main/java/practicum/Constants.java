@@ -45,17 +45,18 @@ public class Constants {
     /// Элементы страницы login
     public static final String LOGIN_HEADER_TEXT = ".//h2[text()='Вход']";
     public static final String REGISTER_LINK_TEXT = REG_PATH;
-    public static final String RECOVER_PWD_TEXT = "/forgot-password";
+
     public static final String INPUT_EMAIL_XPATH = ".//div/input[@name='name']";
     public static final String INPUT_PWD_XPATH = ".//div/input[@name='Пароль']";
     public static final String ENTER_BTN_XPATH = ".//button[text()='Войти']";
+    public static final String RECOVER_PWD_LINK_XPATH = ".//a[text()='Восстановить пароль']";
+    public static final String REG_BTN_XPATH = ".//button[text()='Зарегистрироваться']";
     /// Элементы страницы регистрации
     public static final String REG_HEADER_TEXT = ".//h2[text()='Регистрация']";
     public static final String USERNAME_INPUT_XPATH = ".//label[text() = 'Имя']//following-sibling::input";
     public static final String EMAIL_INPUT_XPATH = ".//label[text() = 'Email']//following-sibling::input";
     public static final String PWD_INPUT_XPATH = ".//div/input[@name='Пароль']";
-    public static final String REG_BTN_XPATH = ".//button[text()='Зарегистрироваться']";
-    public static final String RECOVER_PWD_LINK_XPATH = ".//a[text()='Восстановить пароль']";
+    public static final String LOGIN_LINK_XPATH = ".//p/a[@href='/login' and text()='Войти']";
     public static final String WRONG_PWD_MSG_XPATH = ".//p[text()='Некорректный пароль']";
     public static final String WRONG_PWD_MSG = "Некорректный пароль";
     /// Элементы страницы личного кабинета

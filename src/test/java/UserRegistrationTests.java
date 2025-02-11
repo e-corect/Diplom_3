@@ -31,16 +31,15 @@ public class UserRegistrationTests {
         PersonalAccountPage personalArea = new PersonalAccountPage(driver);
         personalArea.backToPersonalAccount();
         Assert.assertTrue(driver.getCurrentUrl().contains(ACCOUNT_PROFILE_PATH));
-        Assert.assertEquals("Профиль", driver.findElement(personalArea.getProfileTab()).getText());
+        Assert.assertEquals("Профиль", personalArea.getProfileTabTxt());
         userSteps.userLogin(regPage.getUserEmail(), USER_PWD).deleteUser();
     }
-
 
     @Test
     public void unsuccessfullUserRegistration(){
         regPage.registerRandomUser(INCORRECT_USER_PWD);
         Assert.assertTrue(driver.getCurrentUrl().contains(REG_PATH));
-        Assert.assertTrue(driver.findElement(By.xpath(WRONG_PWD_MSG_XPATH)).getText().equals(WRONG_PWD_MSG) );
+        Assert.assertTrue(regPage.getErrorMsg().equals(WRONG_PWD_MSG) );
     }
 
     @After

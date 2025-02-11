@@ -47,9 +47,4 @@ public class UserSteps {
         response = userApi.userRegister(userRegister);
         return this;
     }
-
-    @Step
-    public UserSteps fillInLoginForm(){
-        loginPage.fillInEmail(userSteps.getUserEmail()).fillInPwd(USER_PWD).enterBtnClick();
-    }
 }
