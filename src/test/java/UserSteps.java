@@ -15,15 +15,11 @@ public class UserSteps {
 
     private UserApi userApi = new UserApi();
 
-    public Response getResponse() {
-        return response;
-    }
-
     public String getUserEmail(){
         return userRegister.getEmail().toString();
     }
 
-    @Step("Аутентификация пользователя в системе. Данные берутся из объекта Users.UserSteps")
+    @Step("Аутентификация пользователя в системе. Данные берутся из объекта UserSteps")
     public UserSteps userLogin(String email, String pwd){
         UserLogin body = new UserLogin(email, pwd);
         response = userApi.userLogin(body);

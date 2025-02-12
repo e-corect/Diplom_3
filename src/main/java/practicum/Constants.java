@@ -11,7 +11,6 @@ public class Constants {
     public static final String SITE_URL = "https://stellarburgers.nomoreparties.site";
     public static final String LOGIN_PATH = "/login";
     public static final String REG_PATH = "/register";
-    public static final String ORDERS_FEED_PATH = "/feed";
     public static final String RECOVER_PWD_PATH = "/forgot-password";
     public static final String ACCOUNT_PROFILE_PATH = "account/profile";
     /// API
@@ -29,25 +28,17 @@ public class Constants {
     public static final String PERSONAL_AREA_BTN_XPATH = ".//p[text()='Личный Кабинет']";
 
     /// Элементы главной страницы
+    public static final String ACTIVE_TAB_XPATH = ".//div[contains(@class, 'current')]";
     public static final String ENTER_ACCOUNT_BTN_XPATH = ".//div/button[text()='Войти в аккаунт']";
-    // Заголовок Соберите бургер на главной
     public static final String ASSEMBLE_BURGER_HEADER_XPATH = ".//h1[text()='Соберите бургер']";
     public static final String BUNS_BTN_XPATH = ".//div/span[text()='Булки']";
-    public static final String BUNS_BTN_PARENT_XPATH = ".//div/span[text()='Булки']/parent::div";
+    public static final String INGREDIENTS_LIST_BUNS_HEADER_XPATH = ".//div/h2[text()='Булки']";
     public static final String SAUCES_BTN_XPATH = ".//div/span[text()='Соусы']";
-    public static final String SAUCES_BTN_PARENT_XPATH = ".//div/span[text()='Соусы']/parent::div";
     public static final String FILLINGS_BTN_XPATH = ".//div/span[text()='Начинки']";
-    public static final String FILLINGS_BTN_PARENT_XPATH = ".//div/span[text()='Начинки']/parent::div";
-    // Краторная булка
-    public static final String CRATOR_BUN_XPATH = ".//p[text()='Краторная булка N-200i']";
-    // Соус Традиционный галактический
-    public static final String GALAXY_SAUCE_XPATH = ".//p[text()='Соус традиционный галактический']";
-    // Филе Люминесцентного тетраодонтимформа
-    public static final String LUMIN_FILLING_XPATH = ".//p[text()='Филе Люминесцентного тетраодонтимформа']";
+    public static final String INGREDIENTS_MENU_CLASSNAME = "BurgerIngredients_ingredients__menuContainer__Xu3Mo";
+
     /// Элементы страницы login
     public static final String LOGIN_HEADER_TEXT = ".//h2[text()='Вход']";
-    public static final String REGISTER_LINK_TEXT = REG_PATH;
-
     public static final String INPUT_EMAIL_XPATH = ".//div/input[@name='name']";
     public static final String INPUT_PWD_XPATH = ".//div/input[@name='Пароль']";
     public static final String ENTER_BTN_XPATH = ".//button[text()='Войти']";
@@ -68,8 +59,6 @@ public class Constants {
     public static final String USER_PWD = "Qwertys1234567";
     public static final String INCORRECT_USER_PWD = "123";
     public static final String[] FIRST_LVL_DOMAINS = {"example", "track", "template", "etc", "exe", "jpg", "ico", "rar"};
-
-
 
     public static String getDomain(){
         Random random = new Random();

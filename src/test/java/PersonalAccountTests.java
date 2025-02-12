@@ -2,11 +2,10 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import practicum.pages.*;
+import practicum.pages.LoginPage;
+import practicum.pages.MainPage;
+import practicum.pages.PersonalAccountPage;
 
 import static practicum.Constants.*;
 import static practicum.WebDriverFactory.getDriver;
@@ -16,8 +15,6 @@ public class PersonalAccountTests {
     MainPage mainPage;
     LoginPage loginPage;
     PersonalAccountPage personalArea;
-    RegPage regPage;
-    RecoverPwdPage recoverPwdPage;
     UserSteps userSteps = new UserSteps();
 
     @Before
@@ -30,15 +27,22 @@ public class PersonalAccountTests {
     }
 
     @Test
-    public void enterViaPersonalAccountBtnTest(){
+    public void loginViaPersonalAccountBtnTest(){
         mainPage.personalAreaClick();
         Assert.assertTrue(personalArea.backToPersonalAccount().getProfileTabTxt().equals("Профиль"));
         Assert.assertTrue(driver.getCurrentUrl().contains(ACCOUNT_PROFILE_PATH));
     }
 
     @Test
-    public void jumpToConstructorFromPersonalAccountTest(){
+    public void jumpToMainFromPersAccountViaConstructorTest(){
         personalArea.constructorBtnClick();
+        Assert.assertTrue(mainPage.getAssembleBurgerHeaderTxt().equals("Соберите бургер"));
+        Assert.assertEquals(SITE_URL + "/", driver.getCurrentUrl());
+    }
+
+    @Test
+    public void jumpToMainFromPersAccountViaLogoTest(){
+        personalArea.burgerLogoClick();
         Assert.assertTrue(mainPage.getAssembleBurgerHeaderTxt().equals("Соберите бургер"));
         Assert.assertEquals(SITE_URL + "/", driver.getCurrentUrl());
     }
@@ -48,18 +52,6 @@ public class PersonalAccountTests {
         personalArea.backToPersonalAccount().logout();
         Assert.assertEquals(loginPage.getHeaderTxt(), "Вход");
         Assert.assertTrue(driver.getCurrentUrl().contains(LOGIN_PATH));
-    }
-
-    @Test
-    public void bunsBtnTest(){
-        new WebDriverWait(driver, 2)
-            .until(ExpectedConditions.elementToBeClickable(mainPage.getSaucesBtn()));
-        mainPage.saucesBtnClick();
-
-        mainPage.fillingsBtnClick();
-
-        System.out.println(mainPage.bunsBtnClick().getActiveTabText());
-
     }
 
     @After

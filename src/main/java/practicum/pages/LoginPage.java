@@ -23,7 +23,6 @@ public class LoginPage extends BasePage{
     private final By emailInput = By.xpath(INPUT_EMAIL_XPATH);
     private final By pwdInput = By.xpath(INPUT_PWD_XPATH);
     private final By enterBtn = By.xpath(ENTER_BTN_XPATH);
-    private final By registerLink = By.linkText(REGISTER_LINK_TEXT);
     private final By recoverPwdLink = By.xpath(RECOVER_PWD_LINK_XPATH);
 
     @Step("Открываем форму Вход")
@@ -36,17 +35,6 @@ public class LoginPage extends BasePage{
         new WebDriverWait(driver, 2)
             .until(ExpectedConditions.elementToBeClickable(loginHeader));
         return driver.findElement(loginHeader).getText();
-    }
-
-    public LoginPage goToRegistration(){
-        driver.findElement(registerLink).click();
-        return this;
-    }
-
-    @Step("Нажимаем на ссылку для восстановления пароля")
-    public LoginPage goToRecoverPwd(){
-        driver.findElement(recoverPwdLink).click();
-        return this;
     }
 
     @Step("Очищаем и заполняем поле Email")

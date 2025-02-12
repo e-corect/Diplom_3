@@ -19,24 +19,9 @@ public class BaseHTTPClient {
             .addFilter(new ResponseLoggingFilter())
             .build();
 
-    protected Response makeGetRequest(String path){
-        return given().spec(baseRequestSpec).get(path).thenReturn();
-    }
-
-    protected Response makeGetRequest(String path, String token){
-        return given().spec(baseRequestSpec).auth().oauth2(token).get(path).thenReturn();
-    }
-
-    protected Response makePostRequest(String path, String token, Object body){
-        return given().spec(baseRequestSpec).auth().oauth2(token).body(body).post(path).thenReturn();
-    }
 
     protected Response makePostRequest(String path, Object body){
         return given().spec(baseRequestSpec).body(body).post(path).thenReturn();
-    }
-
-    protected Response makePatchRequest(String path, String token, Object body){
-        return given().spec(baseRequestSpec).auth().oauth2(token).body(body).patch(path).thenReturn();
     }
 
     protected Response makeDeleteRequest(String path, String token){

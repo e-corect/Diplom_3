@@ -16,10 +16,6 @@ public class PersonalAccountPage extends BasePage{
     private final By logoutButton = By.xpath(LOGOUT_BTN_XPATH);
     private final By profileTab = By.xpath(PROFILE_TAB_XPATH);
 
-    public By getProfileTab() {
-        return profileTab;
-    }
-
     public PersonalAccountPage open(){
         driver.get(ACCOUNT_PROFILE_PATH);
         return this;
@@ -45,6 +41,11 @@ public class PersonalAccountPage extends BasePage{
 
     public PersonalAccountPage constructorBtnClick(){
         goToConstructor();
+        return this;
+    }
+
+    public PersonalAccountPage burgerLogoClick(){
+        goToMainPage();
         return this;
     }
     

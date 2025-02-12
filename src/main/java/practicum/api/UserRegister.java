@@ -9,15 +9,8 @@ public class UserRegister extends UserLogin{
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public String getEmail() {
         return email;
     }
 
-    public String getPwd() {
-        return password;
-    }
 }
