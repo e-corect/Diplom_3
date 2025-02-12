@@ -21,6 +21,7 @@ public class MainPage extends BasePage{
     private final By cratorBread = By.xpath(CRATOR_BUN_XPATH);
     private final By galaxySauce = By.xpath(GALAXY_SAUCE_XPATH);
     private final By luminFilling = By.xpath(LUMIN_FILLING_XPATH);
+    private final By activeTab = By.xpath(".//div[contains(@class, 'current')]");
 
     public MainPage open(){
         driver.get(SITE_URL);
@@ -51,5 +52,30 @@ public class MainPage extends BasePage{
     public MainPage personalAreaClick(){
         goToPersonalArea();
         return this;
+    }
+
+    public String getAssembleBurgerHeaderTxt(){
+        new WebDriverWait(driver, 2).until(ExpectedConditions.textToBe(assembleBurger, "Соберите бургер"));
+        return driver.findElement(assembleBurger).getText();
+    }
+
+    public By getCratorBread(){
+        return cratorBread;
+    }
+
+    public By getBunsBtn() {
+        return bunsBtn;
+    }
+
+    public By getSaucesBtn() {
+        return saucesBtn;
+    }
+
+    public By getFillingsBtn() {
+        return fillingsBtn;
+    }
+
+    public String getActiveTabText() {
+        return driver.findElement(activeTab).getText();
     }
 }

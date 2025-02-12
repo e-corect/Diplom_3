@@ -33,6 +33,8 @@ public class LoginPage extends BasePage{
     }
 
     public String getHeaderTxt(){
+        new WebDriverWait(driver, 2)
+            .until(ExpectedConditions.elementToBeClickable(loginHeader));
         return driver.findElement(loginHeader).getText();
     }
 

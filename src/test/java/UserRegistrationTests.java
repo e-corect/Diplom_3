@@ -3,7 +3,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import practicum.WebDriverFactory;
+import static practicum.WebDriverFactory.getDriver;
 import practicum.pages.LoginPage;
 import practicum.pages.PersonalAccountPage;
 import practicum.pages.RegPage;
@@ -13,7 +13,7 @@ import static practicum.Constants.*;
 
 public class UserRegistrationTests {
 
-    WebDriver driver = WebDriverFactory.getDriver();
+    WebDriver driver = getDriver();
     RegPage regPage;
     UserSteps userSteps;
 
@@ -45,5 +45,6 @@ public class UserRegistrationTests {
     @After
     public void clear(){
         driver.close();
+        driver.quit();
     }
 }

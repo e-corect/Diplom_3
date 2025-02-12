@@ -7,7 +7,6 @@ public class Constants {
     public static final String CHROME_DRIVER_PATH = "C:\\Webdriver\\bin\\chromedriver.exe";
     public static final String YANDEX_DRIVER_PATH = "C:\\Webdriver\\bin\\yandexdriver.exe";
     public static final String CHROME_DRIVER_PROPERTY_NAME = "webdriver.chrome.driver";
-    public static final String YANDEX_DRIVER_PROPERTY_NAME = "webdriver.yandex.driver";
     /// URL & paths
     public static final String SITE_URL = "https://stellarburgers.nomoreparties.site";
     public static final String LOGIN_PATH = "/login";
@@ -34,8 +33,11 @@ public class Constants {
     // Заголовок Соберите бургер на главной
     public static final String ASSEMBLE_BURGER_HEADER_XPATH = ".//h1[text()='Соберите бургер']";
     public static final String BUNS_BTN_XPATH = ".//div/span[text()='Булки']";
+    public static final String BUNS_BTN_PARENT_XPATH = ".//div/span[text()='Булки']/parent::div";
     public static final String SAUCES_BTN_XPATH = ".//div/span[text()='Соусы']";
+    public static final String SAUCES_BTN_PARENT_XPATH = ".//div/span[text()='Соусы']/parent::div";
     public static final String FILLINGS_BTN_XPATH = ".//div/span[text()='Начинки']";
+    public static final String FILLINGS_BTN_PARENT_XPATH = ".//div/span[text()='Начинки']/parent::div";
     // Краторная булка
     public static final String CRATOR_BUN_XPATH = ".//p[text()='Краторная булка N-200i']";
     // Соус Традиционный галактический
@@ -62,7 +64,6 @@ public class Constants {
     /// Элементы страницы личного кабинета
     public static final String LOGOUT_BTN_XPATH = ".//button[text()='Выход']";
     public static final String PROFILE_TAB_XPATH = ".//*[text() = 'Профиль']";
-
 
     public static final String USER_PWD = "Qwertys1234567";
     public static final String INCORRECT_USER_PWD = "123";

@@ -42,5 +42,10 @@ public class PersonalAccountPage extends BasePage{
                 .until(ExpectedConditions.elementToBeClickable(profileTab));
         return driver.findElement(profileTab).getText();
     }
+
+    public PersonalAccountPage constructorBtnClick(){
+        goToConstructor();
+        return this;
+    }
     
 }
