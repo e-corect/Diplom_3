@@ -15,10 +15,8 @@ public class WebDriverFactory {
             driverPath = YANDEX_DRIVER_PATH;}
         System.setProperty(CHROME_DRIVER_PROPERTY_NAME, driverPath);
         ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--no-sandbox", "--disable-dev-shm-usage");
         options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
-        WebDriver driver = new ChromeDriver(options);
-        return driver;
+        return new ChromeDriver(options);
     }
 }
 

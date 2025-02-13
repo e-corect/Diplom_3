@@ -13,8 +13,6 @@ import static practicum.Constants.*;
 
 public class RegPage extends BasePage{
 
-    public static final String REG_URL = SITE_URL + REG_PATH;
-
     private String userName;
 
     private String email;
@@ -37,15 +35,16 @@ public class RegPage extends BasePage{
 
     @Step("Открываем форму регистрации")
     public RegPage open(){
-        driver.get(REG_URL);
+        driver.get(URL + REG_PATH);
         return this;
     }
 
+    @Step("Получаем email пользователя из объекта RegPage")
     public String getUserEmail() {
         return email;
     }
 
-    @Step("Заполняем поле Имя")
+    @Step("Заполняем поле Имя на форме регистрации")
     public RegPage fillInUserName(String userName){
         this.userName = userName;
         driver.findElement(userNameInput).clear();
@@ -53,7 +52,7 @@ public class RegPage extends BasePage{
         return this;
     }
 
-    @Step("Заполняем поле Email")
+    @Step("Заполняем поле Email на форме регистрации")
     public RegPage fillInEmail(String email){
         this.email = email;
         driver.findElement(emailInput).clear();
@@ -61,7 +60,7 @@ public class RegPage extends BasePage{
         return this;
     }
 
-    @Step("Заполняем поле Пароль")
+    @Step("Заполняем поле Пароль на форме регистрации")
     public RegPage fillInPwd(String pwd){
         driver.findElement(pwdInput).clear();
         driver.findElement(pwdInput).sendKeys(pwd);
@@ -74,7 +73,7 @@ public class RegPage extends BasePage{
         return this;
     }
 
-    @Step("Нажимем ссылку Войти")
+    @Step("Нажимем ссылку Войти для перехода на форму Вход")
     public RegPage clickLoginLink(){
         new WebDriverWait(driver, 2)
                 .until(ExpectedConditions.elementToBeClickable(loginLink));

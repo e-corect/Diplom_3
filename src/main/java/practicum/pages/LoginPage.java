@@ -13,8 +13,6 @@ import static practicum.Constants.*;
 
 public class LoginPage extends BasePage{
 
-    private static final String LOGIN_URL = SITE_URL + LOGIN_PATH;
-
     public LoginPage(WebDriver driver) {
         super(driver);
     }
@@ -27,10 +25,11 @@ public class LoginPage extends BasePage{
 
     @Step("Открываем форму Вход")
     public LoginPage open(){
-        driver.get(LOGIN_URL);
+        driver.get(URL + LOGIN_PATH);
         return this;
     }
 
+    @Step("Получаем из объекта страницы заголовок формы Вход")
     public String getHeaderTxt(){
         new WebDriverWait(driver, 2)
             .until(ExpectedConditions.elementToBeClickable(loginHeader));

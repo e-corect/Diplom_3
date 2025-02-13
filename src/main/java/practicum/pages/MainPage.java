@@ -1,5 +1,6 @@
 package practicum.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -23,13 +24,15 @@ public class MainPage extends BasePage{
     private final By bunsHeaderAtIngredientsList = By.xpath(INGREDIENTS_LIST_BUNS_HEADER_XPATH);
     private final By ingredientsMenu = By.className(INGREDIENTS_MENU_CLASSNAME);
 
+    @Step("Открываем сайт на главной странице")
     public MainPage open(){
-        driver.get(SITE_URL);
+        driver.get(URL);
         new WebDriverWait(driver, 2)
                 .until(ExpectedConditions.textToBe(assembleBurger, "Соберите бургер"));
         return this;
     }
 
+    @Step("Клик по кнопке Вход в аккаунт")
     public MainPage enterAccountBtnClick(){
         new WebDriverWait(driver, 2)
                 .until(ExpectedConditions.elementToBeClickable(loginBtn));
@@ -37,6 +40,7 @@ public class MainPage extends BasePage{
         return this;
     }
 
+    @Step("Клик по кнопке Булки списка Меню ингредиентов")
     public MainPage bunsBtnClick(){
         new WebDriverWait(driver, 2)
                 .until(ExpectedConditions.elementToBeClickable(bunsBtn));
@@ -44,15 +48,18 @@ public class MainPage extends BasePage{
         return this;
     }
 
+    @Step("Проверка видимости заголовка Булки в списке ингредиентов")
     public boolean isHeaderVisible(){
         return driver.findElement(bunsHeaderAtIngredientsList).isDisplayed();
     }
 
+    @Step("Прокрутка списка ингредиентов в самый верх")
     public MainPage scrollIngredientsMenu(){
         driver.findElement(ingredientsMenu).sendKeys(Keys.ARROW_UP, Keys.ARROW_UP);
         return this;
     }
 
+    @Step("Клик по кнопке 'Соусы' Меню ингредиентов ")
     public MainPage saucesBtnClick(){
         new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.elementToBeClickable(saucesBtn));
@@ -60,10 +67,12 @@ public class MainPage extends BasePage{
         return this;
     }
 
+    @Step("Проверка, что кнопка 'Соусы' нажата")
     public boolean isSaucesBtnPushed(){
         return driver.findElement(saucesBtn).getText().equals(getPushedBtnName());
     }
 
+    @Step("Клик по кнопке 'Начинки' Меню ингредиентов")
     public MainPage fillingsBtnClick(){
         new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.elementToBeClickable(fillingsBtn));
@@ -71,21 +80,25 @@ public class MainPage extends BasePage{
         return this;
     }
 
+    @Step("Проверка, что кнопка 'Начинки' нажата")
     public boolean isFillingsBtnPushed(){
         return driver.findElement(fillingsBtn).getText().equals(getPushedBtnName());
     }
 
+    @Step("Клик по кнопке 'Личный Кабинет' на верхней панели")
     public MainPage personalAreaClick(){
         goToPersonalArea();
         return this;
     }
 
+    @Step("Получение текса из заголовка конструктора бургеров")
     public String getAssembleBurgerHeaderTxt(){
         new WebDriverWait(driver, 2)
                 .until(ExpectedConditions.textToBe(assembleBurger, "Соберите бургер"));
         return driver.findElement(assembleBurger).getText();
     }
 
+    @Step("Получение наименования нажатой в текущий момент кнопки Меню ингредиентов")
     public String getPushedBtnName() {
         return driver.findElement(activeTab).getText();
     }
