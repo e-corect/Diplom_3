@@ -33,7 +33,7 @@ public class UserLoginTests {
     public void loginOnMainPageTest(){
         mainPage.open().enterAccountBtnClick();
         loginPage.fillInEmail(userSteps.getUserEmail()).fillInPwd(USER_PWD).enterBtnClick();
-        Assert.assertTrue(personalArea.backToPersonalAccount().getProfileTabTxt().equals("Профиль"));
+        Assert.assertEquals("Профиль", personalArea.backToPersonalAccount().getProfileTabTxt());
         Assert.assertTrue(driver.getCurrentUrl().contains(ACCOUNT_PROFILE_PATH));
     }
 
@@ -42,7 +42,7 @@ public class UserLoginTests {
 
         mainPage.open().personalAreaClick();
         loginPage.fillInEmail(userSteps.getUserEmail()).fillInPwd(USER_PWD).enterBtnClick();
-        Assert.assertTrue(personalArea.backToPersonalAccount().getProfileTabTxt().equals("Профиль"));
+        Assert.assertEquals("Профиль", personalArea.backToPersonalAccount().getProfileTabTxt());
         Assert.assertTrue(driver.getCurrentUrl().contains(ACCOUNT_PROFILE_PATH));
     }
 
@@ -50,7 +50,7 @@ public class UserLoginTests {
     public void loginViaButtonOnRegFormTest(){
         regPage.open().clickLoginLink();
         loginPage.fillInEmail(userSteps.getUserEmail()).fillInPwd(USER_PWD).enterBtnClick();
-        Assert.assertTrue(personalArea.backToPersonalAccount().getProfileTabTxt().equals("Профиль"));
+        Assert.assertEquals("Профиль", personalArea.backToPersonalAccount().getProfileTabTxt());
         Assert.assertTrue(driver.getCurrentUrl().contains(ACCOUNT_PROFILE_PATH));
     }
 
@@ -58,7 +58,7 @@ public class UserLoginTests {
     public void loginViaLinkOnRecoverPwdPageTest(){
         recoverPwdPage.open().clickLoginLink();
         loginPage.fillInEmail(userSteps.getUserEmail()).fillInPwd(USER_PWD).enterBtnClick();
-        Assert.assertTrue(personalArea.backToPersonalAccount().getProfileTabTxt().equals("Профиль"));
+        Assert.assertEquals("Профиль", personalArea.backToPersonalAccount().getProfileTabTxt());
         Assert.assertTrue(driver.getCurrentUrl().contains(ACCOUNT_PROFILE_PATH));
     }
 

@@ -29,28 +29,28 @@ public class PersonalAccountTests {
     @Test
     public void loginViaPersonalAccountBtnTest(){
         mainPage.personalAreaClick();
-        Assert.assertTrue(personalArea.backToPersonalAccount().getProfileTabTxt().equals("Профиль"));
+        Assert.assertEquals("Профиль", personalArea.backToPersonalAccount().getProfileTabTxt());
         Assert.assertTrue(driver.getCurrentUrl().contains(ACCOUNT_PROFILE_PATH));
     }
 
     @Test
     public void jumpToMainFromPersAccountViaConstructorTest(){
         personalArea.constructorBtnClick();
-        Assert.assertTrue(mainPage.getAssembleBurgerHeaderTxt().equals("Соберите бургер"));
+        Assert.assertEquals("Соберите бургер", mainPage.getAssembleBurgerHeaderTxt());
         Assert.assertEquals(SITE_URL + "/", driver.getCurrentUrl());
     }
 
     @Test
     public void jumpToMainFromPersAccountViaLogoTest(){
         personalArea.burgerLogoClick();
-        Assert.assertTrue(mainPage.getAssembleBurgerHeaderTxt().equals("Соберите бургер"));
+        Assert.assertEquals("Соберите бургер", mainPage.getAssembleBurgerHeaderTxt());
         Assert.assertEquals(SITE_URL + "/", driver.getCurrentUrl());
     }
 
     @Test
     public void logoutTest(){
         personalArea.backToPersonalAccount().logout();
-        Assert.assertEquals(loginPage.getHeaderTxt(), "Вход");
+        Assert.assertEquals("Вход", loginPage.getHeaderTxt());
         Assert.assertTrue(driver.getCurrentUrl().contains(LOGIN_PATH));
     }
 
