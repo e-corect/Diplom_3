@@ -56,7 +56,7 @@ public class Constants {
 
     public static final String[] FIRST_LVL_DOMAINS = {"example", "track", "template", "etc", "exe", "jpg", "ico", "rar"};
     public static String getDomain(){
-        Random random = new Random();
-        return FIRST_LVL_DOMAINS[random.nextInt(FIRST_LVL_DOMAINS.length)];
+        Random rnd = new Random();
+        return FIRST_LVL_DOMAINS[rnd.nextInt(FIRST_LVL_DOMAINS.length)];
     }
 }

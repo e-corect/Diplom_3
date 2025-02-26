@@ -27,7 +27,7 @@ public class MainPageTests {
     }
 
     @Test
-    public void bunsBtnClick(){
+    public void bunsBtnClickTest(){
         mainPage.saucesBtnClick();
         mainPage.bunsBtnClick().scrollIngredientsMenu();
         Assert.assertTrue(mainPage.isHeaderVisible());
@@ -40,7 +40,7 @@ public class MainPageTests {
     }
 
     @Test
-    public void fillingsBtnClick(){
+    public void fillingsBtnClickTest(){
         mainPage.fillingsBtnClick();
         Assert.assertTrue(mainPage.isFillingsBtnPushed());
     }

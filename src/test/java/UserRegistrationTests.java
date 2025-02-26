@@ -24,7 +24,7 @@ public class UserRegistrationTests {
     }
 
     @Test
-    public void successfulUserRegistration(){
+    public void successfulUserRegistrationTest(){
         regPage.registerRandomUser(USER_PWD);
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open().fillInEmail(regPage.getUserEmail()).fillInPwd(USER_PWD).enterBtnClick();
@@ -36,7 +36,7 @@ public class UserRegistrationTests {
     }
 
     @Test
-    public void unsuccessfulUserRegistration(){
+    public void unsuccessfulUserRegistrationTest(){
         regPage.registerRandomUser(INCORRECT_USER_PWD);
         Assert.assertTrue(driver.getCurrentUrl().contains(REG_PATH));
         Assert.assertEquals(WRONG_PWD_MSG, regPage.getErrorMsg());
